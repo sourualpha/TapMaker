@@ -1,0 +1,37 @@
+{
+    "stageName": "ああああああああ",
+    "blocks": [
+        {
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -3.0
+            },
+            "prefabName": "UpCube(Clone)"
+        },
+        {
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -2.0
+            },
+            "prefabName": "UpCube(Clone)"
+        },
+        {
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "prefabName": "UpCube(Clone)"
+        },
+        {
+            "position": {
+                "x": 0.0,
+                "y": 0.000018198128600488417,
+                "z": 0.0
+            },
+            "prefabName": "UpCube(Clone)"
+        }
+    ]
+}
