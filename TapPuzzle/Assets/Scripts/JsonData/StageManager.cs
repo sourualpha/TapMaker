@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
@@ -10,14 +11,18 @@ public class StageManager : MonoBehaviour
     GameObject tempButton;
     [SerializeField]
     GameObject imageScroll;
-
+    [SerializeField]
+    private Fade fade; //FadeCanvas取得
+    [SerializeField]
+    private float fadeTime;  //フェード時間（秒）
     public string stage;
 
     private static StageManager instance;
 
     void Awake()
     {
-        
+        //シーン開始時にフェードを掛ける
+        fade.FadeOut(fadeTime);
         if (instance == null)
         {
             instance = this;
@@ -82,11 +87,15 @@ public class StageManager : MonoBehaviour
     #endregion
 
     #region ボタンがクリックされた時の処理
-    void OnButtonClick(string stageName)
+    public void OnButtonClick(string stageName)
     {
         stage = stageName;
         Debug.Log("Button Clicked: " + stage);
-        Initiate.Fade("GameScene", Color.white, 1.0f);
+        //フェードを掛けてからシーン遷移する
+        fade.FadeIn(fadeTime, () =>
+        {
+            SceneManager.LoadScene("GameScene");
+        });
         // ここにボタンがクリックされたときの処理を追加
     }
     #endregion

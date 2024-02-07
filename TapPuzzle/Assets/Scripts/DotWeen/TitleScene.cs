@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 public class TitleScene : MonoBehaviour
 {
     [SerializeField]
@@ -13,17 +15,29 @@ public class TitleScene : MonoBehaviour
     [SerializeField]
     GameObject createButton; //つくるボタン
 
+    [SerializeField]
+    private Fade fade; //FadeCanvas取得
+
+
+    [SerializeField]
+    private float fadeTime;  //フェード時間（秒）
+
     private static TitleScene instance;
     public bool playMode;
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        //シーン開始時にフェードを掛ける
+        fade.FadeOut(fadeTime);
         playMode = false;
         title.transform.DOMoveY(540f, 1f);
         
         playButton.transform.DOMoveY(340f, 2f).SetDelay(1f).SetEase(Ease.OutBounce);
 
         createButton.transform.DOMoveY(340f, 2f).SetDelay(1.5f).SetEase(Ease.OutBounce);
+
+        
+
 
         DontDestroyOnLoad(gameObject);
     }
@@ -46,12 +60,20 @@ public class TitleScene : MonoBehaviour
 
     public void CreateMode()
     {
-        Initiate.Fade("StageSelect", Color.white, 2.0f);
+        //フェードを掛けてからシーン遷移する
+        fade.FadeIn(fadeTime, () =>
+        {
+            SceneManager.LoadScene("StageSelect");
+        });
     }
 
     public void PlayMode()
     {
-        Initiate.Fade("StageSelect", Color.white, 2.0f);
-        playMode= true;
+        //フェードを掛けてからシーン遷移する
+        fade.FadeIn(fadeTime, () =>
+        {
+            SceneManager.LoadScene("StageSelect");
+        });
+        playMode = true;
     }
 }

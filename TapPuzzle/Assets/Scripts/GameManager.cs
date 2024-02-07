@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     GameObject GameOverPanel; //ゲームオーバー画面
 
     [SerializeField]
-    Text　textIQ;
+    Text　textIQ; //HPのようなもの
 
+    [SerializeField]
+    Text  textStageName; //ステージの名前
     [SerializeField]
     private GameObject createcam; //クリエイトモードのカメラ
 
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
             playcam.SetActive(true);
             playercanvas.SetActive(false);
             playoptionpanel.SetActive(false);
+            textStageName.text = stageName;
         }
 
         Destroy(title.gameObject);
