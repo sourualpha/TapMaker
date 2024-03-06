@@ -1,15 +1,23 @@
 {
     "stages": [
         {
-            "stageName": "あ",
+            "stageName": "sadsadas",
             "blocks": [
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -5.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
                 {
                     "position": {
                         "x": 0.0,
                         "y": 0.0,
                         "z": -4.0
                     },
-                    "prefabName": "UpCube(Clone)"
+                    "prefabName": "RightCube(Clone)"
                 },
                 {
                     "position": {
@@ -17,7 +25,7 @@
                         "y": 0.0,
                         "z": -3.0
                     },
-                    "prefabName": "UpCube(Clone)"
+                    "prefabName": "RightCube(Clone)"
                 },
                 {
                     "position": {
@@ -25,66 +33,13 @@
                         "y": 0.0,
                         "z": -2.0
                     },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.000007072629614413017,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                }
-            ]
-        },
-        {
-            "stageName": "あいうえお",
-            "blocks": [
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "prefabName": "BackCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 1.0,
-                        "z": 0.0
-                    },
-                    "prefabName": "ForwardCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 0.0,
-                        "z": 1.0
-                    },
-                    "prefabName": "ForwardCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
                     "prefabName": "RightCube(Clone)"
                 },
                 {
                     "position": {
                         "x": 0.0,
                         "y": 0.0,
-                        "z": 1.0
+                        "z": -1.0
                     },
                     "prefabName": "RightCube(Clone)"
                 },
@@ -95,269 +50,6 @@
                         "z": 0.0
                     },
                     "prefabName": "RightCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "prefabName": "DownCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "RightCube(Clone)"
-                }
-            ]
-        },
-        {
-            "stageName": "test",
-            "blocks": [
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.00003289468077127822,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00016641552792862058,
-                        "z": -1.0
-                    },
-                    "prefabName": "RightCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 0.00012089026859030128,
-                        "z": -1.0
-                    },
-                    "prefabName": "DownCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 0.00012089026859030128,
-                        "z": 0.0
-                    },
-                    "prefabName": "BackCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 0.00006006281910231337,
-                        "z": 1.0
-                    },
-                    "prefabName": "BackCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.00006006281910231337,
-                        "z": 1.0
-                    },
-                    "prefabName": "ForwardCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00006006281910231337,
-                        "z": 1.0
-                    },
-                    "prefabName": "DownCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.00003289468077127822,
-                        "z": 0.0
-                    },
-                    "prefabName": "RightCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00034067381056956947,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                }
-            ]
-        },
-        {
-            "stageName": "test2",
-            "blocks": [
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 1.0003859996795655,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 2.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 2.000049591064453,
-                        "z": 1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 2.000049591064453,
-                        "z": 1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 1.0000497102737427,
-                        "z": 1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00004971210364601575,
-                        "z": 1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00031297074747271836,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                }
-            ]
-        },
-        {
-            "stageName": "stage2",
-            "blocks": [
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.000009585803127265535,
-                        "z": -2.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00003754852878046222,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.000009585803127265535,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": -1.0,
-                        "y": 1.0003859996795655,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 2.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00004971210364601575,
-                        "z": 1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 1.0,
-                        "y": 0.0,
-                        "z": -1.0
-                    },
-                    "prefabName": "UpCube(Clone)"
-                },
-                {
-                    "position": {
-                        "x": 0.0,
-                        "y": 0.00003754852878046222,
-                        "z": 0.0
-                    },
-                    "prefabName": "UpCube(Clone)"
                 }
             ]
         }

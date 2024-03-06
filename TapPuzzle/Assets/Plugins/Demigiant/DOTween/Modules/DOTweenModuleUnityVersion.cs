@@ -15,7 +15,7 @@ namespace DG.Tweening
     /// <summary>
     /// Shortcuts/functions that are not strictly related to specific Modules
     /// but are available only on some Unity versions
-    /// </summary>
+    
 	public static class DOTweenModuleUnityVersion
     {
         #region Material
@@ -77,7 +77,7 @@ namespace DG.Tweening
         /// Returns a <see cref="CustomYieldInstruction"/> that waits until the tween is killed or complete.
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForCompletion(true);</code>
-        /// </summary>
+        
         public static CustomYieldInstruction WaitForCompletion(this Tween t, bool returnCustomYieldInstruction)
         {
             if (!t.active) {
@@ -91,7 +91,7 @@ namespace DG.Tweening
         /// Returns a <see cref="CustomYieldInstruction"/> that waits until the tween is killed or rewinded.
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForRewind();</code>
-        /// </summary>
+        
         public static CustomYieldInstruction WaitForRewind(this Tween t, bool returnCustomYieldInstruction)
         {
             if (!t.active) {
@@ -105,7 +105,7 @@ namespace DG.Tweening
         /// Returns a <see cref="CustomYieldInstruction"/> that waits until the tween is killed.
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForKill();</code>
-        /// </summary>
+        
         public static CustomYieldInstruction WaitForKill(this Tween t, bool returnCustomYieldInstruction)
         {
             if (!t.active) {
@@ -119,7 +119,7 @@ namespace DG.Tweening
         /// Returns a <see cref="CustomYieldInstruction"/> that waits until the tween is killed or has gone through the given amount of loops.
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForElapsedLoops(2);</code>
-        /// </summary>
+        
         /// <param name="elapsedLoops">Elapsed loops to wait for</param>
         public static CustomYieldInstruction WaitForElapsedLoops(this Tween t, int elapsedLoops, bool returnCustomYieldInstruction)
         {
@@ -135,7 +135,7 @@ namespace DG.Tweening
         /// or has reached the given time position (loops included, delays excluded).
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForPosition(2.5f);</code>
-        /// </summary>
+        
         /// <param name="position">Position (loops included, delays excluded) to wait for</param>
         public static CustomYieldInstruction WaitForPosition(this Tween t, float position, bool returnCustomYieldInstruction)
         {
@@ -151,7 +151,7 @@ namespace DG.Tweening
         /// (meaning when the tween is set in a playing state the first time, after any eventual delay).
         /// It can be used inside a coroutine as a yield.
         /// <para>Example usage:</para><code>yield return myTween.WaitForStart();</code>
-        /// </summary>
+        
         public static CustomYieldInstruction WaitForStart(this Tween t, bool returnCustomYieldInstruction)
         {
             if (!t.active) {
@@ -212,7 +212,7 @@ namespace DG.Tweening
         /// Returns an async <see cref="System.Threading.Tasks.Task"/> that waits until the tween is killed or complete.
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.WaitForCompletion();</code>
-        /// </summary>
+        
         public static async System.Threading.Tasks.Task AsyncWaitForCompletion(this Tween t)
         {
             if (!t.active) {
@@ -226,7 +226,7 @@ namespace DG.Tweening
         /// Returns an async <see cref="System.Threading.Tasks.Task"/> that waits until the tween is killed or rewinded.
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.AsyncWaitForRewind();</code>
-        /// </summary>
+        
         public static async System.Threading.Tasks.Task AsyncWaitForRewind(this Tween t)
         {
             if (!t.active) {
@@ -240,7 +240,7 @@ namespace DG.Tweening
         /// Returns an async <see cref="System.Threading.Tasks.Task"/> that waits until the tween is killed.
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.AsyncWaitForKill();</code>
-        /// </summary>
+        
         public static async System.Threading.Tasks.Task AsyncWaitForKill(this Tween t)
         {
             if (!t.active) {
@@ -254,7 +254,7 @@ namespace DG.Tweening
         /// Returns an async <see cref="System.Threading.Tasks.Task"/> that waits until the tween is killed or has gone through the given amount of loops.
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.AsyncWaitForElapsedLoops();</code>
-        /// </summary>
+        
         /// <param name="elapsedLoops">Elapsed loops to wait for</param>
         public static async System.Threading.Tasks.Task AsyncWaitForElapsedLoops(this Tween t, int elapsedLoops)
         {
@@ -270,7 +270,7 @@ namespace DG.Tweening
         /// (meaning when the tween is set in a playing state the first time, after any eventual delay).
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.AsyncWaitForPosition();</code>
-        /// </summary>
+        
         /// <param name="position">Position (loops included, delays excluded) to wait for</param>
         public static async System.Threading.Tasks.Task AsyncWaitForPosition(this Tween t, float position)
         {
@@ -285,7 +285,7 @@ namespace DG.Tweening
         /// Returns an async <see cref="System.Threading.Tasks.Task"/> that waits until the tween is killed.
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.AsyncWaitForKill();</code>
-        /// </summary>
+        
         public static async System.Threading.Tasks.Task AsyncWaitForStart(this Tween t)
         {
             if (!t.active) {

@@ -34,7 +34,7 @@ public class Fade : MonoBehaviour
 		fade.Range = cutoutRange;
 	}
 
-	float cutoutRange;
+	public float cutoutRange;
 
 	void Init ()
 	{
@@ -49,8 +49,7 @@ public class Fade : MonoBehaviour
 
 	IEnumerator FadeoutCoroutine (float time, System.Action action)
 	{
-        ImageFill();
-        float endTime = Time.timeSinceLevelLoad + time * (cutoutRange);
+		float endTime = Time.timeSinceLevelLoad + time * (cutoutRange);
 
 		var endFrame = new WaitForEndOfFrame ();
 
@@ -59,7 +58,7 @@ public class Fade : MonoBehaviour
 			fade.Range = cutoutRange;
 			yield return endFrame;
 		}
-
+		cutoutRange = 0;
 		fade.Range = cutoutRange;
 
 		if (action != null) {
@@ -67,16 +66,9 @@ public class Fade : MonoBehaviour
 		}
 	}
 
-    //強制的にFadeImageを塗潰す
-    void ImageFill()
-    {
-        cutoutRange = 1f;
-        fade.Range = cutoutRange;
-    }
-    IEnumerator FadeinCoroutine (float time, System.Action action)
+	IEnumerator FadeinCoroutine (float time, System.Action action)
 	{
-
-        float endTime = Time.timeSinceLevelLoad + time * (1 - cutoutRange);
+		float endTime = Time.timeSinceLevelLoad + time * (1 - cutoutRange);
 		
 		var endFrame = new WaitForEndOfFrame ();
 
@@ -85,7 +77,7 @@ public class Fade : MonoBehaviour
 			fade.Range = cutoutRange;
 			yield return endFrame;
 		}
-		cutoutRange = 0;
+		cutoutRange = 1;
 		fade.Range = cutoutRange;
 
 		if (action != null) {

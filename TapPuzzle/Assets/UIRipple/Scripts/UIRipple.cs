@@ -9,50 +9,50 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Image))]
 public class UIRipple : MonoBehaviour {
 	
-	/// <summary> 
+	
 	/// the Sprite that will render
-	/// </summary>
+	
 	public Sprite ShapeSprite;
 	
-	/// <summary> 
+	
 	/// the speed at which the ripple will grow
-	/// </summary>
+	
 	[Range(0.25f,5f)]
 	public float Speed = 1f;
 
-	/// <summary> 
+	
 	/// If true the MaxSize will be set automatically
-	/// </summary>
+	
 	public bool AutomaticMaxSize = true;
 
-	/// <summary> 
+	
 	/// The Maximum Size of the Ripple
-	/// </summary>
+	
 	public float MaxSize = 4f;
 	
-	/// <summary> 
+	
 	/// Start Color of Ripple
-	/// </summary>
+	
 	public Color StartColor = new Color(1f,1f,1f,1f);
 
-	/// <summary> 
+	
 	/// End Color of Ripple
-	/// </summary>
+	
 	public Color EndColor = new Color(1f,1f,1f,1f);
 
-	/// <summary> 
+	
 	/// If true the Ripple will only appear if you click on the UI Element
-	/// </summary>
+	
 	public bool OnUIOnly = true;
 
-	/// <summary> 
+	
 	/// If true Ripples will appear on the top of all other children in the UI Element 
-	/// </summary>
+	
 	public bool RenderOnTop = false;
 
-	/// <summary> 
+	
 	/// If true the Ripple will start at the center of the UI Element
-	/// </summary>
+	
 	public bool StartAtCenter = false;
 
 	void Awake()

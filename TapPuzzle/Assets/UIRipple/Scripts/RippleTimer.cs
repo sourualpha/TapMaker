@@ -7,22 +7,22 @@ using System.Collections.Generic;
 [RequireComponent (typeof (UIRipple))]
 public class RippleTimer : MonoBehaviour {
 
-	/// <summary> 
+	
 	/// The Ripple's Offset
-	/// </summary>
+	
 	public Vector2 Offset;
 
-	/// <summary> 
+	
 	/// The Rate the Ripple will appear
-	/// </summary>
+	
 	public float Rate;
 
 	//just stores the time;
 	float T;
 
-	/// <summary> 
+	
 	//List of Colors that will be used
-	/// <summary> 
+	
 	public List<Color> Colors = new List<Color>();
 	
 	//the index of color we are using from the list

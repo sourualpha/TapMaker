@@ -25,14 +25,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         OnEndDragEvent?.Invoke(eventData);
     }
 
-    /// <summary> 
+    
     /// 自身が所属してるキャンバス 
-    /// </summary>
+    
     private Canvas _belongedCanvas;
 
-    /// <summary>
+
     /// スクリーン座標を自身が所属してるキャンバス上の座標に変換
-    /// </summary>
+    
     /// <param name="pointerPos">クリーン座標</param>
     /// <returns>自身が所属してるキャンバス上の座標</returns>
     public Vector2 GetPositionOnCanvas(Vector2 pointerPos)
@@ -45,9 +45,9 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         return localPointerPos;
     }
 
-    /// <summary> 
+    
     /// 所属するCanvasを取得 
-    /// </summary>
+    
     private Canvas GetBelongedCanvas(Transform t)
     {
         if (t == null)

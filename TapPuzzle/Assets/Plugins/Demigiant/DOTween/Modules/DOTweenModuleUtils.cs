@@ -22,7 +22,7 @@ namespace DG.Tweening
     /// Extra defines set and used for implementation of external assets:
     /// - DOTWEEN_TMP ► TextMesh Pro
     /// - DOTWEEN_TK2D ► 2D Toolkit
-    /// </summary>
+    
 	public static class DOTweenModuleUtils
     {
         static bool _initialized;
@@ -31,7 +31,7 @@ namespace DG.Tweening
 
         /// <summary>
         /// Called via Reflection by DOTweenComponent on Awake
-        /// </summary>
+        
 #if UNITY_2018_1_OR_NEWER
         [UnityEngine.Scripting.Preserve]
 #endif

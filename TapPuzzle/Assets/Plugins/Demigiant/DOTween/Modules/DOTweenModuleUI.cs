@@ -490,7 +490,7 @@ namespace DG.Tweening
 
         /// <summary>
         /// Tweens a Text's text from one integer to another, with options for thousands separators
-        /// </summary>
+        
         /// <param name="fromValue">The value to start from</param>
         /// <param name="endValue">The end value to reach</param>
         /// <param name="duration">The duration of the tween</param>
@@ -645,7 +645,7 @@ namespace DG.Tweening
             /// <summary>
             /// Converts the anchoredPosition of the first RectTransform to the second RectTransform,
             /// taking into consideration offset, anchors and pivot, and returns the new anchoredPosition
-            /// </summary>
+            
             public static Vector2 SwitchToRectTransform(RectTransform from, RectTransform to)
             {
                 Vector2 localPoint;

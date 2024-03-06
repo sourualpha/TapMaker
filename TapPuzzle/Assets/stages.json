@@ -1,0 +1,118 @@
+{
+    "stages": [
+        {
+            "stageName": "wqewqe",
+            "blocks": [
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -4.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -2.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -1.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                }
+            ]
+        },
+        {
+            "stageName": "test",
+            "blocks": [
+                {
+                    "position": {
+                        "x": 2.0,
+                        "y": 1.0,
+                        "z": -1.0
+                    },
+                    "prefabName": "LeftCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 2.0,
+                        "y": 1.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "ForwardCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 1.0,
+                        "z": -1.0
+                    },
+                    "prefabName": "DownCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "DownCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 2.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "UpCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 1.0,
+                        "y": 0.0,
+                        "z": -1.0
+                    },
+                    "prefabName": "UpCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 1.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": -1.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                },
+                {
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "prefabName": "RightCube(Clone)"
+                }
+            ]
+        }
+    ]
+}

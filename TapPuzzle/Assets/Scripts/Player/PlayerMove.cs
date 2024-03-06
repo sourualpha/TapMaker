@@ -5,62 +5,62 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     #region 変数
-    /// <summary> 
-    /// 移動操作を受け付けるタッチエリア 
-    /// </summary>
+
+    // 移動操作を受け付けるタッチエリア 
+    
     [SerializeField]
     private DragHandler _moveController;
 
     
-    /// <summary> 
-    /// 移動速度（m/秒） 
-    /// </summary>
+    
+    // 移動速度（m/秒） 
+    
     [SerializeField]
     private float _movePerSecond = 7f;
 
-    /// <summary> 
-    /// 移動操作のタッチ位置ポインタ 
-    /// </summary>
+    
+    // 移動操作のタッチ位置ポインタ 
+    
     [SerializeField]
     private Sprite _leftPointer;
 
     [SerializeField]
     private GameObject _camera;
 
-    /// <summary> カメラ操作のタッチ位置ポインタ </summary>
+    //カメラ操作のタッチ位置ポインタ
     [SerializeField]
     private Sprite _rightPointer;
-    /// <summary> 
-    /// カメラ操作を受け付けるタッチエリア 
-    /// </summary>
+    
+    // カメラ操作を受け付けるタッチエリア 
+    
     [SerializeField]
     private DragHandler _lookController;
 
-    /// <summary> 
-    /// カメラ速度（°/px） 
-    /// </summary>
+    
+    // カメラ速度（°/px） 
+    
     [SerializeField]
     private float _angularPerPixel = 1f;
 
-    /// <summary>
-    /// ジョイスティック
-    /// </summary>
+
+    //ジョイスティック
+    
     [SerializeField]
     private VariableJoystick _moveControllers;
 
 
-    /// <summary> カメラ操作として前フレームにタッチしたキャンバス上の座標 </summary>
+    //カメラ操作として前フレームにタッチしたキャンバス上の座標
     private Vector2 _lookPointerPosPre;
-    /// <summary> 
+    
     /// 移動操作としてタッチ開始したスクリーン座標 
-    /// </summary>
+    
     private Vector2 _movePointerPosBegin;
 
     private Vector3 _moveVector;
     #endregion
-    /// <summary> 
-    /// 起動時 
-    /// </summary>
+    
+    // 起動時 
+    
     private void Awake()
     {
         _moveController.OnBeginDragEvent += OnBeginDragMove;
@@ -70,7 +70,7 @@ public class PlayerMove : MonoBehaviour
         _lookController.OnDragEvent += OnDragLook;
     }
 
-    /// <summary> 更新処理 </summary>
+    //更新処理 
     private void Update()
     {
         UpdateMove(_moveVector);
@@ -80,14 +80,14 @@ public class PlayerMove : MonoBehaviour
     // 移動操作
     #region Move
 
-    /// <summary> ドラッグ操作開始（移動用） </summary>
+    //ドラッグ操作開始（移動用） 
     private void OnBeginDragMove(PointerEventData eventData)
     {
         // タッチ開始位置を保持
         _movePointerPosBegin = eventData.position;
     }
 
-    /// <summary> ドラッグ操作中（移動用） </summary>
+    //ドラッグ操作中（移動用） 
     private void OnDragMove(PointerEventData eventData)
     {
         // タッチ開始位置からのスワイプ量を移動ベクトルにする
@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
         transform.position += transform.rotation * vector.normalized * _movePerSecond * Time.deltaTime;
     }
 
-    /// <summary> ドラッグ操作終了（移動用） </summary>
+    //ドラッグ操作終了（移動用） 
     private void OnEndDragMove(PointerEventData eventData)
     {
         // 移動ベクトルを解消
@@ -113,13 +113,13 @@ public class PlayerMove : MonoBehaviour
 
     // カメラ操作
     #region Look
-    /// <summary> ドラッグ操作開始（カメラ用） </summary>
+    //ドラッグ操作開始（カメラ用） 
     private void OnBeginDragLook(PointerEventData eventData)
     {
         _lookPointerPosPre = _lookController.GetPositionOnCanvas(eventData.position);
     }
 
-    /// <summary> ドラッグ操作中（カメラ用） </summary>
+    //ドラッグ操作中（カメラ用） 
     private void OnDragLook(PointerEventData eventData)
     {
         var pointerPosOnCanvas = _lookController.GetPositionOnCanvas(eventData.position);

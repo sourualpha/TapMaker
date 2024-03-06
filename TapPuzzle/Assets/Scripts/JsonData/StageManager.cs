@@ -7,40 +7,69 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
+    #region ボタン関連
     [SerializeField]
     GameObject tempButton;
     [SerializeField]
     GameObject imageScroll;
+    #endregion
+
+    #region フェード関連
     [SerializeField]
     private Fade fade; //FadeCanvas取得
     [SerializeField]
     private float fadeTime;  //フェード時間（秒）
+    #endregion
+
+    [SerializeField]
+    GameObject LoadingPanel;//ロード画面
     public string stage;
 
     private static StageManager instance;
+
+    AudioSource audioSource; //BGM
+
+    [SerializeField]
+    private AudioClip soundEffect;
 
     void Awake()
     {
         //シーン開始時にフェードを掛ける
         fade.FadeOut(fadeTime);
+        audioSource = GetComponent<AudioSource>();
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadStageData();
+            LoadStageData();//jsonファイルの読み込み
         }
         else
         {
             Destroy(gameObject);
-            LoadStageData();
         }
     }
 
+    private void Update()
+    {
+        Debug.Log(fade.cutoutRange);
+        Loading();
+    }
+    void Loading()
+    {
+        if(fade.cutoutRange > 1)
+        {
+            LoadingPanel.SetActive(true);
+        }
+        else
+        {
+            LoadingPanel.SetActive(false);
+        }
+    }
 
     #region jsonファイルの読み込み
     void LoadStageData()
     {
-        string filePath = Application.dataPath + "/Json/stages.json";
+        string filePath = Application.dataPath + "/stages.json";
 
         if (File.Exists(filePath))
         {
@@ -89,6 +118,7 @@ public class StageManager : MonoBehaviour
     #region ボタンがクリックされた時の処理
     public void OnButtonClick(string stageName)
     {
+        audioSource.PlayOneShot(soundEffect);
         stage = stageName;
         Debug.Log("Button Clicked: " + stage);
         //フェードを掛けてからシーン遷移する
@@ -99,4 +129,9 @@ public class StageManager : MonoBehaviour
         // ここにボタンがクリックされたときの処理を追加
     }
     #endregion
+
+    public void ChangeGameMode()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }

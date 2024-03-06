@@ -66,7 +66,7 @@ namespace DG.Tweening
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens completed
         /// (meaning the tweens that don't have infinite loops and were not already complete)
-        /// </summary>
+        
         /// <param name="withCallbacks">For Sequences only: if TRUE also internal Sequence callbacks will be fired,
         /// otherwise they will be ignored</param>
         public static int DOComplete(this AudioMixer target, bool withCallbacks = false)
@@ -78,7 +78,7 @@ namespace DG.Tweening
         /// Kills all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens killed.
-        /// </summary>
+        
         /// <param name="complete">If TRUE completes the tween before killing it</param>
         public static int DOKill(this AudioMixer target, bool complete = false)
         {
@@ -89,7 +89,7 @@ namespace DG.Tweening
         /// Flips the direction (backwards if it was going forward or viceversa) of all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens flipped.
-        /// </summary>
+        
         public static int DOFlip(this AudioMixer target)
         {
             return DOTween.Flip(target);
@@ -99,7 +99,7 @@ namespace DG.Tweening
         /// Sends to the given position all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens involved.
-        /// </summary>
+        
         /// <param name="to">Time position to reach
         /// (if higher than the whole tween duration the tween will simply reach its end)</param>
         /// <param name="andPlay">If TRUE will play the tween after reaching the given position, otherwise it will pause it</param>
@@ -112,7 +112,7 @@ namespace DG.Tweening
         /// Pauses all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens paused.
-        /// </summary>
+        
         public static int DOPause(this AudioMixer target)
         {
             return DOTween.Pause(target);
@@ -122,7 +122,7 @@ namespace DG.Tweening
         /// Plays all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
-        /// </summary>
+        
         public static int DOPlay(this AudioMixer target)
         {
             return DOTween.Play(target);
@@ -132,7 +132,7 @@ namespace DG.Tweening
         /// Plays backwards all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
-        /// </summary>
+        
         public static int DOPlayBackwards(this AudioMixer target)
         {
             return DOTween.PlayBackwards(target);
@@ -142,7 +142,7 @@ namespace DG.Tweening
         /// Plays forward all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens played.
-        /// </summary>
+        
         public static int DOPlayForward(this AudioMixer target)
         {
             return DOTween.PlayForward(target);
@@ -152,7 +152,7 @@ namespace DG.Tweening
         /// Restarts all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens restarted.
-        /// </summary>
+        
         public static int DORestart(this AudioMixer target)
         {
             return DOTween.Restart(target);
@@ -162,7 +162,7 @@ namespace DG.Tweening
         /// Rewinds all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens rewinded.
-        /// </summary>
+        
         public static int DORewind(this AudioMixer target)
         {
             return DOTween.Rewind(target);
@@ -172,7 +172,7 @@ namespace DG.Tweening
         /// Smoothly rewinds all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens rewinded.
-        /// </summary>
+        
         public static int DOSmoothRewind(this AudioMixer target)
         {
             return DOTween.SmoothRewind(target);
@@ -182,7 +182,7 @@ namespace DG.Tweening
         /// Toggles the paused state (plays if it was paused, pauses if it was playing) of all tweens that have this target as a reference
         /// (meaning tweens that were started from this target, or that had this target added as an Id)
         /// and returns the total number of tweens involved.
-        /// </summary>
+        
         public static int DOTogglePause(this AudioMixer target)
         {
             return DOTween.TogglePause(target);

@@ -21,8 +21,6 @@ public class JsonDataLoad : MonoBehaviour
         stageManagerInstance = FindObjectOfType<StageManager>(); // StageManagerのインスタンスを取得
         if (stageManagerInstance != null)
         {
-
-
             // リセットと再読み込み
             ResetBlocks();
             // stage変数を参照
@@ -37,9 +35,10 @@ public class JsonDataLoad : MonoBehaviour
         }
     }
 
+    #region Jsonデータのロード、ブロックの配置
     void LoadStage(string stageName)
     {
-        string filePath = Application.dataPath + "/Json/stages.json";
+        string filePath = Application.dataPath + "/stages.json";
 
         if (File.Exists(filePath))
         {
@@ -83,8 +82,9 @@ public class JsonDataLoad : MonoBehaviour
             Debug.LogError("ファイルが見つかりません。");
         }
     }
+    #endregion
 
-    // プレハブの名前を元に対応するPrefabを取得
+    #region プレハブの名前を元に対応するPrefabを取得
     GameObject GetPrefabByName(string prefabName)
     {
         PrefabData prefabData = blockPrefabs.Find(x => x.prefabName == prefabName);
@@ -94,7 +94,9 @@ public class JsonDataLoad : MonoBehaviour
         }
         return null;
     }
+    #endregion
 
+    #region 配置しているブロックのリセット
     void ResetBlocks()
     {
         // シーン内のすべての GameObject を取得
@@ -111,4 +113,5 @@ public class JsonDataLoad : MonoBehaviour
             }
         }
     }
+    #endregion
 }

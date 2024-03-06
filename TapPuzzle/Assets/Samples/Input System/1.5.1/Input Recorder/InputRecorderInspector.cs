@@ -10,7 +10,7 @@ namespace UnityEngine.InputSystem.Editor
     /// A custom inspector for <see cref="InputRecorder"/>. Adds UI elements to store captures in files, to load them from
     /// there, and to initiate replays from within the editor. It also shows information for when captures or replays are
     /// in progress.
-    /// </summary>
+    
     [CustomEditor(typeof(InputRecorder))]
     internal class InputRecorderInspector : UnityEditor.Editor
     {

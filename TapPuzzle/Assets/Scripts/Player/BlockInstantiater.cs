@@ -39,16 +39,23 @@ public class BlockInstantiater : MonoBehaviour
     [SerializeField]
     GameObject SavePanel;//セーブのためのパネル
 
+    [SerializeField]
+    private AudioClip soundEffect;//効果音
+
     #endregion
 
+    AudioSource audioSource; //BGM
 
     // Use this for initialization
     int blocknumber; //ブロックリストの番号
     int blockCount;
     public GameObject guideBlock; // ガイドブロック
     private Vector3 blockSize; // ブロックのサイズ
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         // ↓ 画面中央の平面座標を取得する
         displayCenter = new Vector2(Screen.width / 2, Screen.height / 2);
         blocknumber= 0;
@@ -63,7 +70,7 @@ public class BlockInstantiater : MonoBehaviour
         guideBlock.SetActive(false); // 最初は非表示にする
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         // ↓ 「カメラからのレイ」を画面中央の平面座標から飛ばす
@@ -78,7 +85,24 @@ public class BlockInstantiater : MonoBehaviour
             pos = hit.normal + hit.collider.transform.position;
             if(hit.collider.CompareTag("Cube"))
             {
-                UpdateGuideBlockPosition(pos);
+                UpdateGuideBlockPosition(pos); 
+                // 右クリック
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                  audioSource.PlayOneShot(soundEffect);
+                  // 生成位置の変数の座標にブロックを生成
+                  Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
+                  float distance = 100; // 飛ばす&表示するRayの長さ
+                  float duration = 3;   // 表示期間（秒）
+                  Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
+                }   
+
+                // 左クリック
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //レイが当たっているオブジェクトを削除
+                    Destroy(hit.collider.gameObject);
+                }
             }
             else
             {
@@ -87,22 +111,9 @@ public class BlockInstantiater : MonoBehaviour
             }
 
             DrawBlockOutline(pos, blockPrefab[blocknumber].transform.localScale);
-            // ↓ 右クリック
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                // 生成位置の変数の座標にブロックを生成
-                Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
-                float distance = 100; // 飛ばす&表示するRayの長さ
-                float duration = 3;   // 表示期間（秒）
-                Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
-            }
 
-            // ↓ 左クリック
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                // ↓ レイが当たっているオブジェクトを削除
-                Destroy(hit.collider.gameObject);
-            }
+
+
         }
         else
         {
@@ -152,17 +163,8 @@ public class BlockInstantiater : MonoBehaviour
     // ガイドブロックの位置を更新するメソッド
     void UpdateGuideBlockPosition(Vector3 position)
     {
-        if (blockCount == 0)
-        {
-            guideBlock.SetActive(true);
-            guideBlock.transform.position = Vector3.zero;
-        }
-        else
-        {
             guideBlock.SetActive(true);
             guideBlock.transform.position = position;
-        }
-
     }
 
     void OnDestroy()
@@ -170,6 +172,7 @@ public class BlockInstantiater : MonoBehaviour
         // シーンが終了するときにガイドブロックも破棄する
         Destroy(guideBlock);
     }
+
     #region ブロックの設定
 
     public void UpBlockButton()
@@ -217,6 +220,7 @@ public class BlockInstantiater : MonoBehaviour
         }        
         if (Physics.Raycast(ray, out hit))
         {
+            audioSource.PlayOneShot(soundEffect);
             // ↓ 生成位置の変数の値を「ブロックの向き + ブロックの位置」
             pos = hit.normal + hit.collider.transform.position;
             // 生成位置の変数の座標にブロックを生成

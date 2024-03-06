@@ -7,45 +7,33 @@ using UnityEngine.SceneManagement;
 public class TitleScene : MonoBehaviour
 {
     [SerializeField]
-    GameObject title; //タイトルのテキスト
-
-    [SerializeField]
-    GameObject playButton; //プレイボタン
-
-    [SerializeField]
-    GameObject createButton; //つくるボタン
-
-    [SerializeField]
     private Fade fade; //FadeCanvas取得
-
 
     [SerializeField]
     private float fadeTime;  //フェード時間（秒）
 
+    AudioSource audioSource; //BGM
+
+    [SerializeField]
+    private AudioClip soundEffect;
+
     private static TitleScene instance;
-    public bool playMode;
+    public bool isplayMode;
+    public bool istitle;
     // Start is called before the first frame update
     void Start()
     { 
         //シーン開始時にフェードを掛ける
-        fade.FadeOut(fadeTime);
-        playMode = false;
-        title.transform.DOMoveY(540f, 1f);
+        if(istitle == true)
+        {
+            fade.FadeOut(fadeTime);
+        }
         
-        playButton.transform.DOMoveY(340f, 2f).SetDelay(1f).SetEase(Ease.OutBounce);
+        isplayMode = false;
+        audioSource = GetComponent<AudioSource>();
 
-        createButton.transform.DOMoveY(340f, 2f).SetDelay(1.5f).SetEase(Ease.OutBounce);
-
-        
-
-
+        StartCoroutine("VolumeUp");
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ChangePlayMode()
@@ -59,21 +47,36 @@ public class TitleScene : MonoBehaviour
     }
 
     public void CreateMode()
-    {
+    { 
+        audioSource.PlayOneShot(soundEffect);
         //フェードを掛けてからシーン遷移する
         fade.FadeIn(fadeTime, () =>
         {
+
             SceneManager.LoadScene("StageSelect");
+            istitle = false;
         });
     }
 
     public void PlayMode()
-    {
+    { 
+        audioSource.PlayOneShot(soundEffect);
         //フェードを掛けてからシーン遷移する
         fade.FadeIn(fadeTime, () =>
         {
+
             SceneManager.LoadScene("StageSelect");
         });
-        playMode = true;
+        isplayMode = true;
+        istitle = false;
+    }
+
+    IEnumerator VolumeUp()
+    {
+        while (audioSource.volume <= 0.4)
+        {
+            audioSource.volume += 0.05f;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

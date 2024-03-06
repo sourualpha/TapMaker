@@ -7,12 +7,19 @@ public class JsonDataSave : MonoBehaviour
 {
 
     [SerializeField]
-    InputField stagename;
+    InputField stagename; //ステージの名前
 
     [SerializeField]
-    GameObject SavePanel;
+    GameObject SavePanel; //保存するパネル
+
+    [SerializeField]
+    private AudioClip soundEffect; //効果音
+
+    AudioSource audioSource; 
     public void SaveButton()
     {
+        audioSource = GetComponent<AudioSource>();
+
         // シーン内のすべての GameObject を取得
         GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
 
@@ -35,6 +42,7 @@ public class JsonDataSave : MonoBehaviour
         for (int i = 0; i < blockList.Count; i++)
         {
             save.blocks[i] = new BlockData();
+            //ブロックの場所の情報の追加
             save.blocks[i].position = new Vector3Data(
                 blockList[i].transform.position.x,
                 blockList[i].transform.position.y,
@@ -49,10 +57,10 @@ public class JsonDataSave : MonoBehaviour
         SavePanel.SetActive(false);
     }
 
-    // ステージデータの保存
+    #region ステージデータの保存
     void SaveStagesData(SaveData saveData)
     {
-        string filePath = Application.dataPath + "/Json/stages.json";
+        string filePath = Application.dataPath + "/stages.json";
 
         StageManagement stageManagement;
         if (File.Exists(filePath))
@@ -86,7 +94,9 @@ public class JsonDataSave : MonoBehaviour
         streamWriter.Write(stagesJson);
         streamWriter.Flush();
         streamWriter.Close();
+        audioSource.PlayOneShot(soundEffect);
     }
+    #endregion
 }
 
 [System.Serializable]
@@ -99,15 +109,15 @@ public class StageManagement
 [System.Serializable]
 public class SaveData
 {
-    public string stageName;
+    public string stageName; //ステージの名前
     public BlockData[] blocks;
 }
 
 [System.Serializable]
 public class BlockData
 {
-    public Vector3Data position;
-    public string prefabName;
+    public Vector3Data position; //ブロックの場所
+    public string prefabName; //プレハブの名前
 }
 
 [System.Serializable]

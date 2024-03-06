@@ -14,7 +14,7 @@ namespace UnityEngine.InputSystem
     /// <summary>
     /// A wrapper component around <see cref="InputEventTrace"/> that provides an easy interface for recording input
     /// from a GameObject.
-    /// </summary>
+    
     /// <remarks>
     /// This component comes with a custom inspector that provides an easy recording and playback interface and also
     /// gives feedback about what has been recorded in the trace. The interface also allows saving and loading event
@@ -34,13 +34,13 @@ namespace UnityEngine.InputSystem
     {
         /// <summary>
         /// Whether a capture is currently in progress.
-        /// </summary>
+        
         /// <value>True if a capture is in progress.</value>
         public bool captureIsRunning => m_EventTrace != null && m_EventTrace.enabled;
 
         /// <summary>
         /// Whether a replay is currently being run by the component.
-        /// </summary>
+        
         /// <value>True if replay is running.</value>
         /// <seealso cref="replay"/>
         /// <seealso cref="StartReplay"/>
@@ -50,7 +50,7 @@ namespace UnityEngine.InputSystem
         /// <summary>
         /// If true, input recording is started immediately when the component is enabled. Disabled by default.
         /// Call <see cref="StartCapture"/> to manually start capturing.
-        /// </summary>
+        
         /// <value>True if component will start recording automatically in <see cref="OnEnable"/>.</value>
         /// <seealso cref="StartCapture"/>
         public bool startRecordingWhenEnabled
@@ -66,25 +66,25 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// Total number of events captured.
-        /// </summary>
+        
         /// <value>Number of captured events.</value>
         public long eventCount => m_EventTrace?.eventCount ?? 0;
 
         /// <summary>
         /// Total size of captured events.
-        /// </summary>
+        
         /// <value>Size of captured events in bytes.</value>
         public long totalEventSizeInBytes => m_EventTrace?.totalEventSizeInBytes ?? 0;
 
         /// <summary>
         /// Total size of capture memory currently allocated.
-        /// </summary>
+        
         /// <value>Size of memory allocated for capture.</value>
         public long allocatedSizeInBytes => m_EventTrace?.allocatedSizeInBytes ?? 0;
 
         /// <summary>
         /// Whether to record frame marker events when capturing input. Enabled by default.
-        /// </summary>
+        
         /// <value>True if frame marker events will be recorded.</value>
         /// <seealso cref="InputEventTrace.recordFrameMarkers"/>
         public bool recordFrames
@@ -103,7 +103,7 @@ namespace UnityEngine.InputSystem
         /// <summary>
         /// Whether to record only <see cref="StateEvent"/>s and <see cref="DeltaStateEvent"/>s. Disabled by
         /// default.
-        /// </summary>
+        
         /// <value>True if anything but state events should be ignored.</value>
         public bool recordStateEventsOnly
         {
@@ -113,7 +113,7 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// Path that constrains the devices to record from.
-        /// </summary>
+        
         /// <value>Input control path to match devices or null/empty.</value>
         /// <remarks>
         /// By default, this is not set. Meaning that input will be recorded from all devices. By setting this property
@@ -153,7 +153,7 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// The underlying event trace that contains the captured input events.
-        /// </summary>
+        
         /// <value>Underlying event trace.</value>
         /// <remarks>
         /// This will be null if no capture is currently associated with the recorder.
@@ -162,7 +162,7 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// The replay controller for when a replay is running.
-        /// </summary>
+        
         /// <value>Replay controller for the event trace while replay is running.</value>
         /// <seealso cref="replayIsRunning"/>
         /// <seealso cref="StartReplay"/>
@@ -181,7 +181,7 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// Whether a replay should create new devices or replay recorded events as is. Disabled by default.
-        /// </summary>
+        
         /// <value>True if replay should temporary create new devices.</value>
         /// <seealso cref="InputEventTrace.ReplayController.WithAllDevicesMappedToNewInstances"/>
         public bool replayOnNewDevices
@@ -192,7 +192,7 @@ namespace UnityEngine.InputSystem
 
         /// <summary>
         /// Whether to attempt to re-create the original event timing when replaying events. Disabled by default.
-        /// </summary>
+        
         /// <value>If true, events are queued based on their timestamp rather than based on their recorded frames (if any).</value>
         /// <seealso cref="InputEventTrace.ReplayController.PlayAllEventsAccordingToTimestamps"/>
         public bool simulateOriginalTimingOnReplay

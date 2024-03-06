@@ -19,6 +19,7 @@ public class CameraSlidet : MonoBehaviour
         PlayCameraControler();
     }
 
+    //ƒJƒƒ‰‚Ì‘€ì
     void PlayCameraControler()
     {
 
