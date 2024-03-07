@@ -7,18 +7,18 @@ public class JsonDataSave : MonoBehaviour
 {
 
     [SerializeField]
-    InputField stagename; //ステージの名前
+    InputField _stagename; //ステージの名前
 
     [SerializeField]
-    GameObject SavePanel; //保存するパネル
+    GameObject _savePanel; //保存するパネル
 
     [SerializeField]
-    private AudioClip soundEffect; //効果音
+    private AudioClip _soundEffect; //効果音
 
-    AudioSource audioSource; 
+    AudioSource _audioSource; 
     public void SaveButton()
     {
-        audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
         // シーン内のすべての GameObject を取得
         GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
@@ -36,7 +36,7 @@ public class JsonDataSave : MonoBehaviour
         }
 
         SaveData save = new SaveData(); // SaveDataクラスをインスタンス化
-        save.stageName = stagename.text;
+        save.stageName = _stagename.text;
         save.blocks = new BlockData[blockList.Count];
 
         for (int i = 0; i < blockList.Count; i++)
@@ -54,7 +54,7 @@ public class JsonDataSave : MonoBehaviour
         }
 
         SaveStagesData(save);
-        SavePanel.SetActive(false);
+        _savePanel.SetActive(false);
     }
 
     #region ステージデータの保存
@@ -94,7 +94,7 @@ public class JsonDataSave : MonoBehaviour
         streamWriter.Write(stagesJson);
         streamWriter.Flush();
         streamWriter.Close();
-        audioSource.PlayOneShot(soundEffect);
+        _audioSource.PlayOneShot(_soundEffect);
     }
     #endregion
 }

@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] Brock;
     public int IQ; //IQ = Hpみたいな感じ
     public string stageName; //ステージの名前
-    bool isOption; //設定を開いてるかどうか
+    public bool isOption; //設定を開いてるかどうか
     TitleScene title;
     StageManager stageManagerInstance;
     AudioSource audioSource; //BGM

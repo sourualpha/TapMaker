@@ -10,15 +10,12 @@ public class PlayerMove : MonoBehaviour
     
     [SerializeField]
     private DragHandler _moveController;
-
-    
     
     // 移動速度（m/秒） 
     
     [SerializeField]
     private float _movePerSecond = 7f;
 
-    
     // 移動操作のタッチ位置ポインタ 
     
     [SerializeField]
@@ -49,6 +46,8 @@ public class PlayerMove : MonoBehaviour
     private VariableJoystick _moveControllers;
 
 
+    [SerializeField]
+    private GameManager _gameManager;
     //カメラ操作として前フレームにタッチしたキャンバス上の座標
     private Vector2 _lookPointerPosPre;
     
@@ -57,6 +56,7 @@ public class PlayerMove : MonoBehaviour
     private Vector2 _movePointerPosBegin;
 
     private Vector3 _moveVector;
+
     #endregion
     
     // 起動時 
@@ -73,7 +73,12 @@ public class PlayerMove : MonoBehaviour
     //更新処理 
     private void Update()
     {
-        UpdateMove(_moveVector);
+        if(_gameManager.isOption == false)
+        {
+            UpdateMove(_moveVector);
+            PCMove();
+        }
+
     }
 
 
@@ -108,6 +113,48 @@ public class PlayerMove : MonoBehaviour
         // 移動ベクトルを解消
         _moveVector = Vector3.zero;
     }
+
+    //WASD、矢印キーでの移動
+    private void PCMove()
+    {
+        // カメラの向きに合わせた移動ベクトルを計算する
+        Vector3 moveDirection = Vector3.zero;
+        if (_camera != null)
+        {
+            // カメラの向きからx軸とz軸の成分を取得して移動ベクトルとする
+            Vector3 cameraForward = _camera.transform.forward;
+            // y軸成分を0にすることで水平な方向のみを考慮する
+            cameraForward.y = 0; 
+            Vector3 cameraRight = _camera.transform.right;
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                moveDirection += cameraForward;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                moveDirection -= cameraForward;
+            }
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                moveDirection -= cameraRight;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                moveDirection += cameraRight;
+            }
+
+            // 移動ベクトルの大きさを1に正規化する
+            if (moveDirection.magnitude > 0)
+            {
+                moveDirection.Normalize();
+            }
+
+            // プレイヤーキャラクターを移動させる
+            this.transform.position += moveDirection * _movePerSecond * Time.deltaTime;
+        }
+    }
+
     #endregion
 
 

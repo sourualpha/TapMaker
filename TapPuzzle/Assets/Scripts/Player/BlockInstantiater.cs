@@ -51,18 +51,20 @@ public class BlockInstantiater : MonoBehaviour
     int blockCount;
     public GameObject guideBlock; // ガイドブロック
     private Vector3 blockSize; // ブロックのサイズ
+    private JsonDataLoad dataLoad;//データのロード
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        dataLoad = GetComponent<JsonDataLoad>();
         // ↓ 画面中央の平面座標を取得する
         displayCenter = new Vector2(Screen.width / 2, Screen.height / 2);
         blocknumber= 0;
-        blockCount = 0;
+        blockCount = dataLoad.blockCount;
+        Debug.Log(blockCount);
         optionpanel.SetActive(false);
         SavePanel.SetActive(false);
-
+        
         // ガイドブロックの生成
         guideBlock = Instantiate(guideBlock, Vector3.zero, Quaternion.identity);
         // 最初のブロックを使用してサイズを取得
@@ -229,6 +231,7 @@ public class BlockInstantiater : MonoBehaviour
             float duration = 3;   // 表示期間（秒）
             Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
             blockCount++;
+
         }
     }
 

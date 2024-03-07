@@ -14,9 +14,9 @@ public class JsonDataLoad : MonoBehaviour
     public List<PrefabData> blockPrefabs; // プレハブのリストをUnityインスペクタで設定
     private string currentStage;
     StageManager stageManagerInstance;
+    public int blockCount;
 
-
-    private void Start()
+    private void Awake()
     {
         stageManagerInstance = FindObjectOfType<StageManager>(); // StageManagerのインスタンスを取得
         if (stageManagerInstance != null)
@@ -63,6 +63,7 @@ public class JsonDataLoad : MonoBehaviour
                     {
                         GameObject newBlock = Instantiate(prefab, position, Quaternion.identity);
                         newBlock.name = blockData.prefabName; // ブロックの名前を設定
+                        blockCount++;
                     }
                     else
                     {
