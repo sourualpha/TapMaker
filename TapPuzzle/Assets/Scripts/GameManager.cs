@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
 
     #region 設定
 
+    //作るモードで設定を開くボタン
     public void OptionButton()
     {
         audioSource.PlayOneShot(soundEffect);
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //保存する画面を出すボタン
     public void SavePanelButton()
     {
         audioSource.PlayOneShot(soundEffect);
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
         SavePanel.SetActive(false);
     }
 
+    //プレイモードで設定を開くボタン
     public void PlayOptionButton()
     {
         audioSource.PlayOneShot(soundEffect);

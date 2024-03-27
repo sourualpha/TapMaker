@@ -57,11 +57,14 @@ public class BlockInstantiater : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         dataLoad = GetComponent<JsonDataLoad>();
+
         // ↓ 画面中央の平面座標を取得する
         displayCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
         blocknumber= 0;
         blockCount = dataLoad.blockCount;
         Debug.Log(blockCount);
+
         optionpanel.SetActive(false);
         SavePanel.SetActive(false);
         
@@ -77,6 +80,7 @@ public class BlockInstantiater : MonoBehaviour
     {
         // ↓ 「カメラからのレイ」を画面中央の平面座標から飛ばす
         Ray ray = createcam.ScreenPointToRay(displayCenter);
+
         // ↓ 当たったオブジェクト情報を格納する変数
         RaycastHit hit;
 
@@ -91,19 +95,27 @@ public class BlockInstantiater : MonoBehaviour
                 // 右クリック
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                  audioSource.PlayOneShot(soundEffect);
-                  // 生成位置の変数の座標にブロックを生成
-                  Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
-                  float distance = 100; // 飛ばす&表示するRayの長さ
-                  float duration = 3;   // 表示期間（秒）
-                  Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
+                    audioSource.PlayOneShot(soundEffect);
+                    // 生成位置の変数の座標にブロックを生成
+                    Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
+
+                    float distance = 100; // 飛ばす&表示するRayの長さ
+                    float duration = 3;   // 表示期間（秒）
+
+                    Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
+                    blockCount++;
                 }   
 
                 // 左クリック
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //レイが当たっているオブジェクトを削除
+                    // ↓ 生成位置の変数の値を「ブロックの向き + ブロックの位置」
+                    pos = hit.normal + hit.collider.transform.position;
+
+
+                    // ↓ レイが当たっているオブジェクトを削除
                     Destroy(hit.collider.gameObject);
+                    blockCount--;
                 }
             }
             else
@@ -119,13 +131,25 @@ public class BlockInstantiater : MonoBehaviour
         }
         else
         {
+            //ブロックが何もない場合に真ん中に一つ目を作る
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (blockCount == 0)
+                {
+                    Instantiate(blockPrefab[blocknumber], Vector3.zero, Quaternion.identity);
+                    blockCount++;
+                    Debug.Log("aaa");
+                }
+            }
             // レイが何もヒットしないときにもガイドブロックを非表示にする
             guideBlock.SetActive(false);
         }
 
 
+        
     }
 
+    #region ガイドブロック
     // ガイドブロックの位置に枠線を描画するメソッド
     void DrawBlockOutline(Vector3 position, Vector3 blockSize)
     {
@@ -144,22 +168,6 @@ public class BlockInstantiater : MonoBehaviour
         new Vector3(position.x - halfX, position.y + halfY, position.z + halfZ),
         new Vector3(position.x + halfX, position.y + halfY, position.z + halfZ)
         };
-
-        // Draw lines between corners to form the outline
-        Debug.DrawLine(corners[0], corners[1], Color.red, 0.1f);
-        Debug.DrawLine(corners[1], corners[3], Color.red, 0.1f);
-        Debug.DrawLine(corners[3], corners[2], Color.red, 0.1f);
-        Debug.DrawLine(corners[2], corners[0], Color.red, 0.1f);
-
-        Debug.DrawLine(corners[4], corners[5], Color.red, 0.1f);
-        Debug.DrawLine(corners[5], corners[7], Color.red, 0.1f);
-        Debug.DrawLine(corners[7], corners[6], Color.red, 0.1f);
-        Debug.DrawLine(corners[6], corners[4], Color.red, 0.1f);
-
-        Debug.DrawLine(corners[0], corners[4], Color.red, 0.1f);
-        Debug.DrawLine(corners[1], corners[5], Color.red, 0.1f);
-        Debug.DrawLine(corners[2], corners[6], Color.red, 0.1f);
-        Debug.DrawLine(corners[3], corners[7], Color.red, 0.1f);
     }
 
     // ガイドブロックの位置を更新するメソッド
@@ -174,6 +182,8 @@ public class BlockInstantiater : MonoBehaviour
         // シーンが終了するときにガイドブロックも破棄する
         Destroy(guideBlock);
     }
+
+    #endregion
 
     #region ブロックの設定
 

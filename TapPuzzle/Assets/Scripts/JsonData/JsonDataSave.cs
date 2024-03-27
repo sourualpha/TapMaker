@@ -16,6 +16,8 @@ public class JsonDataSave : MonoBehaviour
     private AudioClip _soundEffect; //効果音
 
     AudioSource _audioSource; 
+
+    //保存するためのボタン
     public void SaveButton()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -29,7 +31,7 @@ public class JsonDataSave : MonoBehaviour
         // ブロックだけを抽出してリストに追加
         foreach (GameObject obj in allObjects)
         {
-            if (obj.CompareTag("Cube")) // ブロックに関するタグを設定していると仮定
+            if (obj.CompareTag("Cube")) // Cubeタグが付いているオブジェクトを追加
             {
                 blockList.Add(obj);
             }

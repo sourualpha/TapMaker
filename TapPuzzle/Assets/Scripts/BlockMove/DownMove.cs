@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ForwardMove : MonoBehaviour, IPointerClickHandler
+public class DownMove : MonoBehaviour, IPointerClickHandler
 {
     public Rigidbody rb;
-    public float moveForce = 10f;
-    private bool isClicked = false;
+    public float moveForce = 10f;//加速度
+    private bool isClicked = false;//クリックしたか否か
     GameManager gameManager;
     Vector3 sp;
 
@@ -15,8 +15,8 @@ public class ForwardMove : MonoBehaviour, IPointerClickHandler
     {
         // Rigidbody2Dコンポーネントを取得します
         rb = GetComponent<Rigidbody>();
-        gameManager= FindObjectOfType<GameManager>();
-        sp = transform.position;
+        sp= transform.localPosition;
+        gameManager = FindObjectOfType<GameManager>();
     }
     private void Update()
     {
@@ -32,13 +32,12 @@ public class ForwardMove : MonoBehaviour, IPointerClickHandler
     private void OnCollisionEnter(Collision collision)
     {
         transform.position = sp;
-        rb.velocity = Vector3.zero;  
-        if(isClicked == true)
-        {
+        rb.velocity = Vector3.zero;
+        if(isClicked == true) {
             gameManager.DecreaseIQ(10);
         }
         isClicked = false;
- 
+
         
     }
 
@@ -46,12 +45,13 @@ public class ForwardMove : MonoBehaviour, IPointerClickHandler
     {
         if (isClicked)
         {
-            // 右方向に移動する
-            rb.AddForce(Vector3.back * moveForce, ForceMode.Impulse);
+            // 下方向に移動する
+            rb.AddForce(Vector3.down * moveForce, ForceMode.Impulse);
         }
-        if(transform.position.z < -10f)
+        if(transform.position.y < -10f)
         {
             Destroy(gameObject);
+
         }
     }
 }

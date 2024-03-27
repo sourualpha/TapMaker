@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class LeftMove : MonoBehaviour, IPointerClickHandler
+public class UpMove : MonoBehaviour, IPointerClickHandler
 {
     public Rigidbody rb;
     public float moveForce = 10f;
     private bool isClicked = false;
-    private bool isTouching = false; // 他のオブジェクトと接触しているかどうかを判定するフラグ
     GameManager gameManager;
     Vector3 sp;
 
@@ -16,8 +15,8 @@ public class LeftMove : MonoBehaviour, IPointerClickHandler
     {
         // Rigidbody2Dコンポーネントを取得します
         rb = GetComponent<Rigidbody>();
-        sp = transform.localPosition;
         gameManager = FindObjectOfType<GameManager>();
+        sp = transform.localPosition;
     }
     private void Update()
     {
@@ -33,8 +32,8 @@ public class LeftMove : MonoBehaviour, IPointerClickHandler
     private void OnCollisionEnter(Collision collision)
     {
         transform.position = sp;
-        rb.velocity = Vector3.zero;
-        if (isClicked == true)
+        rb.velocity = Vector3.zero; 
+        if(isClicked == true)
         {
             gameManager.DecreaseIQ(10);
         }
@@ -45,14 +44,15 @@ public class LeftMove : MonoBehaviour, IPointerClickHandler
 
     void Move()
     {
-        if (isClicked && !isTouching)
+        if (isClicked)
         {
-            // 右方向に移動する
-            rb.AddForce(Vector3.left * moveForce, ForceMode.Impulse);
+            // 上方向に移動する
+            rb.AddForce(Vector3.up * moveForce, ForceMode.Impulse);
         }
-        if(transform.position.x < -10f)
+        if(transform.position.y > 10f)
         {
             Destroy(gameObject);
+
         }
     }
 }
