@@ -126,7 +126,11 @@ public class PlayerMove : MonoBehaviour
             // y軸成分を0にすることで水平な方向のみを考慮する
             cameraForward.y = 0; 
             Vector3 cameraRight = _camera.transform.right;
+            
 
+            Vector3 cameraUp = _camera.transform.up;
+            cameraUp.z = 0;
+            cameraUp.x = 0;
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
                 moveDirection += cameraForward;
@@ -142,6 +146,15 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 moveDirection += cameraRight;
+            }
+
+            if(Input.GetKey(KeyCode.Space))
+            {
+                moveDirection += cameraUp;
+            }
+            else if(Input.GetKey(KeyCode.LeftShift))
+            {
+                moveDirection -= cameraUp;
             }
 
             // 移動ベクトルの大きさを1に正規化する
