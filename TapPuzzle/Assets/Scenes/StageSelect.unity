@@ -319,7 +319,7 @@ MonoBehaviour:
   tempButton: {fileID: 1032102669051136320, guid: c276ea7b79076c745afa7996aca35003, type: 3}
   imageScroll: {fileID: 1640570543}
   fade: {fileID: 1464477507}
-  fadeTime: 1
+  fadeTime: 2
   LoadingPanel: {fileID: 774290843}
   stage: 
   soundEffect: {fileID: 8300000, guid: d64dbb7201d93f84497ce3aeb503ce9f, type: 3}
@@ -1037,7 +1037,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: a025c9dd2fec9be4399d9cfa169ac602, type: 3}
     - target: {fileID: 11491604, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: cutoutRange
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22424616, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: m_Pivot.x
@@ -1178,7 +1178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 908, y: -439.0107}
+  m_AnchoredPosition: {x: 908, y: -439.426}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640570545

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JsonDataLoad : MonoBehaviour
 {
@@ -12,19 +13,22 @@ public class JsonDataLoad : MonoBehaviour
     }
 
     public List<PrefabData> blockPrefabs; // プレハブのリストをUnityインスペクタで設定
-    private string currentStage;
+    private string currentStage; //現在のステージの名前
+    public InputField currentStageName; //現在のステージの名前を入れる場所
     StageManager stageManagerInstance;
     public int blockCount;
 
     private void Awake()
     {
+        
         stageManagerInstance = FindObjectOfType<StageManager>(); // StageManagerのインスタンスを取得
         if (stageManagerInstance != null)
         {
             // リセットと再読み込み
             ResetBlocks();
             // stage変数を参照
-            currentStage = stageManagerInstance.stage;            
+            currentStage = stageManagerInstance.stage;
+            currentStageName.text = currentStage;//上書き保存のために現在のステージの名前を入れる
             LoadStage(currentStage);
 
             Debug.Log("Current Stage: " + currentStage);

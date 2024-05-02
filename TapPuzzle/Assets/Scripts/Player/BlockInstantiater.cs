@@ -157,17 +157,17 @@ public class BlockInstantiater : MonoBehaviour
         float halfY = blockSize.y / 2f;
         float halfZ = blockSize.z / 2f;
 
-        Vector3[] corners = new Vector3[]
-        {
-        new Vector3(position.x - halfX, position.y - halfY, position.z - halfZ),
-        new Vector3(position.x + halfX, position.y - halfY, position.z - halfZ),
-        new Vector3(position.x - halfX, position.y + halfY, position.z - halfZ),
-        new Vector3(position.x + halfX, position.y + halfY, position.z - halfZ),
-        new Vector3(position.x - halfX, position.y - halfY, position.z + halfZ),
-        new Vector3(position.x + halfX, position.y - halfY, position.z + halfZ),
-        new Vector3(position.x - halfX, position.y + halfY, position.z + halfZ),
-        new Vector3(position.x + halfX, position.y + halfY, position.z + halfZ)
-        };
+        //Vector3[] corners = new Vector3[]
+        //{
+        //new Vector3(position.x - halfX, position.y - halfY, position.z - halfZ),
+        //new Vector3(position.x + halfX, position.y - halfY, position.z - halfZ),
+        //new Vector3(position.x - halfX, position.y + halfY, position.z - halfZ),
+        //new Vector3(position.x + halfX, position.y + halfY, position.z - halfZ),
+        //new Vector3(position.x - halfX, position.y - halfY, position.z + halfZ),
+        //new Vector3(position.x + halfX, position.y - halfY, position.z + halfZ),
+        //new Vector3(position.x - halfX, position.y + halfY, position.z + halfZ),
+        //new Vector3(position.x + halfX, position.y + halfY, position.z + halfZ)
+        //};
     }
 
     // ガイドブロックの位置を更新するメソッド

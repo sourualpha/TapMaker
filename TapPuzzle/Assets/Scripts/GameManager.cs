@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         title = FindObjectOfType<TitleScene>(); // TitleSceneのインスタンスを取得
         stageManagerInstance = FindObjectOfType<StageManager>(); // StageManagerのインスタンスを取得
         audioSource = GetComponent<AudioSource>();
