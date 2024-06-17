@@ -12,7 +12,17 @@ public class CameraSlidet : MonoBehaviour
     private float horizontalRotation = 0f;
     private float verticalRotation = 0f;
 
+    private TitleScene _title;
+    [SerializeField]
+    private Camera _cam;
 
+    [SerializeField]
+    private GameObject _hitPrefab;
+
+    private void Start()
+    {
+        _title = FindObjectOfType<TitleScene>(); // TitleSceneのインスタンスを取得
+    }
 
     private void Update()
     {
@@ -22,9 +32,19 @@ public class CameraSlidet : MonoBehaviour
     //カメラの操作
     void PlayCameraControler()
     {
-
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = cameraDistance;
+        Vector3 worldPos = _cam.ScreenToWorldPoint(mousePos);
         if ((Input.GetMouseButtonDown(0) ))
         {
+            if(_title.isplayMode == true)
+            {
+                _hitPrefab.SetActive(true);
+                Instantiate(_hitPrefab, worldPos, Quaternion.identity);
+            }
+            
+            
+            
             isRotating = true;
         }
         else if ((Input.GetMouseButtonUp(0)))
@@ -50,10 +70,3 @@ public class CameraSlidet : MonoBehaviour
 
 
 }
-
-
-
-
-
-
-
