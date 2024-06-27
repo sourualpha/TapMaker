@@ -42,6 +42,9 @@ public class BlockInstantiater : MonoBehaviour
     [SerializeField]
     private AudioClip soundEffect;//Œø‰Ê‰¹
 
+    [SerializeField]
+    private AudioClip switchBlock;//Œø‰Ê‰¹
+
     #endregion
 
     AudioSource audioSource; //BGM
@@ -190,31 +193,37 @@ public class BlockInstantiater : MonoBehaviour
     public void UpBlockButton()
     {
         blocknumber = 0;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void DownBlockButton()
     {
         blocknumber = 1;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void RightBlockButton()
     {
         blocknumber = 2;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void LeftBlockButton()
     {
         blocknumber = 3;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void ForwardBlockButton()
     {
         blocknumber = 4;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void BackBlockButton()
     {
         blocknumber = 5;
+        audioSource.PlayOneShot(switchBlock);
     }
 
     public void CreateBlock()

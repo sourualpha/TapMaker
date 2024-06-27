@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip soundEffect; //Œø‰Ê‰¹
+
+    [SerializeField]
+    private AudioClip ClearEffect; //Œø‰Ê‰¹
     #endregion
 
 
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         BrockCheck();
+        
         textIQ.text = "IQ:" + string.Format("{0:D3}",IQ);
     }
 
@@ -97,9 +101,10 @@ public class GameManager : MonoBehaviour
     {
         Brock = GameObject.FindGameObjectsWithTag("Cube");
 
-        if(Brock.Length == 0)
+        if(Brock.Length == 0 && title.isplayMode == true)
         {
             ClearPanel.SetActive(true);
+            audioSource.PlayOneShot(ClearEffect);    
         }
     }
 

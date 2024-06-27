@@ -33,7 +33,7 @@ public class CameraSlidet : MonoBehaviour
     void PlayCameraControler()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = cameraDistance;
+        mousePos.z = 3f;
         Vector3 worldPos = _cam.ScreenToWorldPoint(mousePos);
         if ((Input.GetMouseButtonDown(0) ))
         {
@@ -42,9 +42,9 @@ public class CameraSlidet : MonoBehaviour
                 _hitPrefab.SetActive(true);
                 Instantiate(_hitPrefab, worldPos, Quaternion.identity);
             }
-            
-            
-            
+
+
+
             isRotating = true;
         }
         else if ((Input.GetMouseButtonUp(0)))

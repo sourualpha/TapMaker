@@ -47,7 +47,7 @@ public class SceneReload : MonoBehaviour
 
     IEnumerator VolumeUp()
     {
-        while (audioSource.volume <= 1)
+        while (audioSource.volume <= 0.3f)
         {
             audioSource.volume += 0.05f;
             yield return new WaitForSeconds(0.1f);

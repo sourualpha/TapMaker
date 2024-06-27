@@ -9,6 +9,7 @@ public class BackMove : MonoBehaviour, IPointerClickHandler
     public float moveForce = 10f;
     private bool isClicked = false;
     GameManager gameManager;
+
     Vector3 sp;
 
     private void Start()
@@ -26,6 +27,7 @@ public class BackMove : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("クリックイベントが発生");
+        
         isClicked = true;
     }
 

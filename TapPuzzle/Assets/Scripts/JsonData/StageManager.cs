@@ -36,6 +36,7 @@ public class StageManager : MonoBehaviour
     {
         //シーン開始時にフェードを掛ける
         fade.FadeOut(fadeTime);
+
         audioSource = GetComponent<AudioSource>();
         if (instance == null)
         {
