@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Common;
 
 public class DownMove : MonoBehaviour, IPointerClickHandler
 {
     public Rigidbody rb;
-    public float moveForce = 10f;//加速度
+    public float moveForce = Common.GrovalConst.MoveForce;//加速度
     private bool isClicked = false;//クリックしたか否か
     GameManager gameManager;
     Vector3 sp;
@@ -29,12 +30,13 @@ public class DownMove : MonoBehaviour, IPointerClickHandler
         isClicked = true;
     }
 
+    //他のブロックに当たった際にHPを減らし初期位置に戻す
     private void OnCollisionEnter(Collision collision)
     {
         transform.position = sp;
         rb.velocity = Vector3.zero;
         if(isClicked == true) {
-            gameManager.DecreaseIQ(10);
+            gameManager.DecreaseIQ(Common.GrovalConst.DecreaseIQAmount);
         }
         isClicked = false;
 
@@ -48,7 +50,7 @@ public class DownMove : MonoBehaviour, IPointerClickHandler
             // 下方向に移動する
             rb.AddForce(Vector3.down * moveForce, ForceMode.Impulse);
         }
-        if(transform.position.y < -10f)
+        if(transform.position.y < -Common.GrovalConst.ResetPosition)
         {
             Destroy(gameObject);
 

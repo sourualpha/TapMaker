@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Common;
 
 public class BackMove : MonoBehaviour, IPointerClickHandler
 {
     public Rigidbody rb;
-    public float moveForce = 10f;
+    public float moveForce = Common.GrovalConst.MoveForce;
     private bool isClicked = false;
     GameManager gameManager;
 
@@ -38,19 +39,20 @@ public class BackMove : MonoBehaviour, IPointerClickHandler
             // 後ろ方向に移動する
             rb.AddForce(Vector3.forward * moveForce, ForceMode.Impulse);
         }
-        if(transform.position.z > 10f)
+        if(transform.position.z > Common.GrovalConst.ResetPosition)
         {
             Destroy(gameObject);
         }
     }
 
+    //他のブロックに当たった際にHPを減らし初期位置に戻す
     private void OnCollisionEnter(Collision collision)
     {
         transform.position = sp;
         rb.velocity= Vector3.zero;
         if(isClicked == true)
         {
-            gameManager.DecreaseIQ(10);
+            gameManager.DecreaseIQ(Common.GrovalConst.DecreaseIQAmount);
         }
         isClicked= false;
 

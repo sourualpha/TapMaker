@@ -4,10 +4,13 @@ using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    // ドラッグ開始イベント
     public Action<PointerEventData> OnBeginDragEvent;
 
+    // ドラッグ中イベント
     public Action<PointerEventData> OnDragEvent;
 
+    // ドラッグ終了イベント
     public Action<PointerEventData> OnEndDragEvent;
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -27,7 +30,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     
     /// 自身が所属してるキャンバス 
-    
     private Canvas _belongedCanvas;
 
 
@@ -45,9 +47,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         return localPointerPos;
     }
 
-    
-    /// 所属するCanvasを取得 
-    
+
+    /// <summary>
+    /// 所属するCanvasを取得
+    /// </summary>
+    /// <param name="t">Transform</param>
+    /// <returns>所属するCanvas</returns>
     private Canvas GetBelongedCanvas(Transform t)
     {
         if (t == null)

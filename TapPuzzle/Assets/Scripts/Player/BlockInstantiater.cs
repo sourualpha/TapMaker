@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
+using Common;
+
+
 public class BlockInstantiater : MonoBehaviour
 {
-
     Vector2 displayCenter;
 
     // ブロックを設置する位置を一応リアルタイムで格納
@@ -51,7 +52,7 @@ public class BlockInstantiater : MonoBehaviour
 
     // Use this for initialization
     int blocknumber; //ブロックリストの番号
-    int blockCount;
+    int blockCount; //ブロックの総数
     public GameObject guideBlock; // ガイドブロック
     private Vector3 blockSize; // ブロックのサイズ
     private JsonDataLoad dataLoad;//データのロード
@@ -64,8 +65,8 @@ public class BlockInstantiater : MonoBehaviour
         // ↓ 画面中央の平面座標を取得する
         displayCenter = new Vector2(Screen.width / 2, Screen.height / 2);
 
-        blocknumber= 0;
-        blockCount = dataLoad.blockCount;
+        blocknumber= 0; //初期のブロックの種類
+        blockCount = dataLoad.blockCount; //ロードしたステージのブロック数
         Debug.Log(blockCount);
 
         optionpanel.SetActive(false);
@@ -102,8 +103,8 @@ public class BlockInstantiater : MonoBehaviour
                     // 生成位置の変数の座標にブロックを生成
                     Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
 
-                    float distance = 100; // 飛ばす&表示するRayの長さ
-                    float duration = 3;   // 表示期間（秒）
+                    float distance = Common.GrovalConst.RayDistance; // 飛ばす&表示するRayの長さ
+                    float duration = Common.GrovalConst.RayDuration;   // 表示期間（秒）
 
                     Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
                     blockCount++;
@@ -246,8 +247,8 @@ public class BlockInstantiater : MonoBehaviour
             pos = hit.normal + hit.collider.transform.position;
             // 生成位置の変数の座標にブロックを生成
             Instantiate(blockPrefab[blocknumber], pos, Quaternion.identity);
-            float distance = 100; // 飛ばす&表示するRayの長さ
-            float duration = 3;   // 表示期間（秒）
+            float distance = Common.GrovalConst.RayDistance; // 飛ばす&表示するRayの長さ
+            float duration = Common.GrovalConst.RayDuration;   // 表示期間（秒）
             Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
             blockCount++;
 

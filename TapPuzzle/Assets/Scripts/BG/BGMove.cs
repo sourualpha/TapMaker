@@ -24,9 +24,11 @@ public class BGMove : MonoBehaviour
     {
         if (_material != null)
         {
+            // 時間に基づいてテクスチャのオフセットを計算
             var x = Mathf.Repeat(Time.time * _offsetSpeed.x, MAX_OFFSET);
             var y = Mathf.Repeat(Time.time * _offsetSpeed.y, MAX_OFFSET);
             var offset = new Vector2(x, y);
+            // テクスチャのオフセットをシェーダーに設定
             _material.SetTextureOffset(PROPERTY_NAME, offset);
         }
     }

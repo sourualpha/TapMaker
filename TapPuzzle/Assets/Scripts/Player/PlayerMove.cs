@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Common;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class PlayerMove : MonoBehaviour
     private DragHandler _moveController;
     
     // 移動速度（m/秒） 
-    
     [SerializeField]
-    private float _movePerSecond = 7f;
+    private float _movePerSecond = Common.GrovalConst.DefaultMovePerSecond;
 
     // 移動操作のタッチ位置ポインタ 
     
@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
     // カメラ速度（°/px） 
     
     [SerializeField]
-    private float _angularPerPixel = 1f;
+    private float _angularPerPixel = Common.GrovalConst.DefaultAngularPerPixel;
 
 
     //ジョイスティック
@@ -63,9 +63,12 @@ public class PlayerMove : MonoBehaviour
     
     private void Awake()
     {
+        // 移動操作のドラッグイベントを設定
         _moveController.OnBeginDragEvent += OnBeginDragMove;
         _moveController.OnDragEvent += OnDragMove;
         _moveController.OnEndDragEvent += OnEndDragMove;
+
+        // カメラ操作のドラッグイベントを設定
         _lookController.OnBeginDragEvent += OnBeginDragLook;
         _lookController.OnDragEvent += OnDragLook;
     }
@@ -190,10 +193,14 @@ public class PlayerMove : MonoBehaviour
         _lookPointerPosPre = pointerPosOnCanvas;
     }
 
+    // カメラの回転
     private void LookRotate(Vector2 angles)
     {
+        // 操作量に応じた回転角度を計算
         Vector2 deltaAngles = angles * _angularPerPixel;
+        // プレイヤーの回転角度を更新
         transform.eulerAngles += new Vector3(0f, deltaAngles.y);
+        // カメラのローカル回転角度を更新
         _camera.transform.localEulerAngles += new Vector3(deltaAngles.x, 0f);
     }
     #endregion

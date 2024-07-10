@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Common;
 
 public class UpMove : MonoBehaviour, IPointerClickHandler
 {
     public Rigidbody rb;
-    public float moveForce = 10f;
+    public float moveForce = Common.GrovalConst.MoveForce;
     private bool isClicked = false;
     GameManager gameManager;
-    Vector3 sp;
+    Vector3 sp;//初期位置
 
     private void Start()
     {
@@ -29,13 +30,14 @@ public class UpMove : MonoBehaviour, IPointerClickHandler
         isClicked = true;
     }
 
+    //他のブロックに当たった際にHPを減らし初期位置に戻す
     private void OnCollisionEnter(Collision collision)
     {
         transform.position = sp;
         rb.velocity = Vector3.zero; 
         if(isClicked == true)
         {
-            gameManager.DecreaseIQ(10);
+            gameManager.DecreaseIQ(Common.GrovalConst.DecreaseIQAmount);
         }
         isClicked = false;
 
@@ -49,7 +51,7 @@ public class UpMove : MonoBehaviour, IPointerClickHandler
             // 上方向に移動する
             rb.AddForce(Vector3.up * moveForce, ForceMode.Impulse);
         }
-        if(transform.position.y > 10f)
+        if(transform.position.y > Common.GrovalConst.ResetPosition)
         {
             Destroy(gameObject);
 

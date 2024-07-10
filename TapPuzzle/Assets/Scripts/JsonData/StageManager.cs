@@ -25,12 +25,12 @@ public class StageManager : MonoBehaviour
     GameObject LoadingPanel;//ロード画面
     public string stage;
 
-    private static StageManager instance;
+    private static StageManager instance;//ステージマネージャーのインスタンス
 
     AudioSource audioSource; //BGM
 
     [SerializeField]
-    private AudioClip soundEffect;
+    private AudioClip soundEffect; //効果音
 
     void Awake()
     {
@@ -55,6 +55,7 @@ public class StageManager : MonoBehaviour
         Debug.Log(fade.cutoutRange);
         Loading();
     }
+
     void Loading()
     {
         if(fade.cutoutRange > 1)

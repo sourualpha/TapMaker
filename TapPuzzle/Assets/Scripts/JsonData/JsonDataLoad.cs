@@ -15,8 +15,8 @@ public class JsonDataLoad : MonoBehaviour
     public List<PrefabData> blockPrefabs; // プレハブのリストをUnityインスペクタで設定
     private string currentStage; //現在のステージの名前
     public InputField currentStageName; //現在のステージの名前を入れる場所
-    StageManager stageManagerInstance;
-    public int blockCount;
+    StageManager stageManagerInstance; //ステージマネージャーのインスタンス
+    public int blockCount; //ブロックの総数
 
     private void Awake()
     {

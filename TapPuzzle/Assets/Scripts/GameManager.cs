@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using DG.Tweening;
+using Common;
 
 public class GameManager : MonoBehaviour
 {
@@ -52,12 +53,13 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    private GameObject[] Brock;
-    public int IQ; //IQ = Hpみたいな感じ
+    private GameObject[] Brock; //今あるブロックの数を入れておく配列
+    private int IQ; //IQ = Hpみたいな感じ
     public string stageName; //ステージの名前
     public bool isOption; //設定を開いてるかどうか
-    TitleScene title;
-    StageManager stageManagerInstance;
+
+    TitleScene title; //タイトルシーンのインスタンス
+    StageManager stageManagerInstance; //ステージマネージャーのインスタンス
     AudioSource audioSource; //BGM
 
 
@@ -71,8 +73,10 @@ public class GameManager : MonoBehaviour
 
         ClearPanel.SetActive(false);
         GameOverPanel.SetActive(false);
-        IQ = 150;
 
+        IQ = Common.GrovalConst.HP;
+
+        //プレイモードだった場合にプレイ用の画面を出す
         if(title.isplayMode == true)
         {
             createcam.SetActive(false);
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
             textStageName.text = stageName;
         }
 
+        //titleとstagemanagerのオブジェクトを残しておくと新しくステージを選択できないためゲームシーンに入った時点で消しておく
         Destroy(title.gameObject);
         Destroy(stageManagerInstance.gameObject);
     }
@@ -89,9 +94,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BrockCheck();
+        BrockCheck(); //クリアチェック
         
-        textIQ.text = "IQ:" + string.Format("{0:D3}",IQ);
+        textIQ.text = "IQ:" + string.Format("{0:D3}",IQ); //HPの表示
     }
 
     #region クリアチェック
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //HPを減らす処理
     public void DecreaseIQ(int amount)
     {
         IQ -= amount;
@@ -144,6 +150,7 @@ public class GameManager : MonoBehaviour
         SavePanel.SetActive(true);
     }
 
+    //保存画面から戻るボタン
     public void SavePanelBackButton()
     {
         audioSource.PlayOneShot(soundEffect);
