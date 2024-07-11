@@ -22,9 +22,14 @@ public class TitleScene : MonoBehaviour
     [SerializeField]
     private AudioClip soundEffect; // 効果音
 
+    [SerializeField]
+    private GameObject optionPanel; //オプションパネル
+
     private static TitleScene instance; // シングルトンインスタンス
+
     public bool isplayMode; // プレイモードフラグ
     public bool istitle; // タイトルフラグ
+    public bool isoption; //オプションパネルを開いてるかどうかのフラグ
 
     // シーン開始時に呼ばれる
     void Start()
@@ -35,11 +40,29 @@ public class TitleScene : MonoBehaviour
             fade.FadeOut(fadeTime);
         }
 
+        optionPanel.SetActive(false);
         isplayMode = false;
         audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(VolumeUp()); 
         DontDestroyOnLoad(gameObject); 
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!isoption)
+            {
+                optionPanel.SetActive(true);
+                isoption = true;
+            }
+            else
+            {
+                optionPanel.SetActive(false);
+                isoption = false;
+            }
+        }
     }
 
     // プレイモードへのシーン遷移
@@ -79,6 +102,11 @@ public class TitleScene : MonoBehaviour
         });
         isplayMode = true;
         istitle = false;
+    }
+
+    public void ExitButton()
+    {
+        Application.Quit();
     }
 
 
